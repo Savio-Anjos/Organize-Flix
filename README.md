@@ -8,5 +8,10 @@
 <img src="https://img.shields.io/github/last-commit/Savio-Anjos/Organize-Robbies?color=3B82F6">
 </p>
 
+## 🚀 Tecnologias
+Esse projeto está utilizando as seguintes tecnologias:
+
+- [Typescript](https://www.typescriptlang.org/)
+
 
 
