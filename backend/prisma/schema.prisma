@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// criar uma migration: yarn prisma migrate dev
+model User {
+  id         String    @id @default(uuid())
+  name       String
+  password   String
+  created_ad DateTime? @default(now())
+  updated_ad DateTime? @default(now())
+
+  @@map("users")
+}
+
+model Category {
+  id         String    @id @default(uuid())
+  name       String
+  created_ad DateTime? @default(now())
+  updated_ad DateTime? @default(now())
+  itens      Item[]
+
+  @@map("categories")
+}
+
+model Favorite {
+  id         String    @id @default(uuid())
+  status     Boolean   @default(false)
+  created_ad DateTime? @default(now())
+  updated_ad DateTime? @default(now())
+  items      Item[]
+
+  @@map("favorites")
+}
+
+model Item {
+  id         String    @id @default(uuid())
+  name       String
+  banner     String
+  seasons    Int?
+  created_ad DateTime? @default(now())
+  updated_ad DateTime? @default(now())
+
+  categoty    Category @relation(fields: [category_id], references: [id])
+  favorites   Favorite @relation(fields: [favorite_id], references: [id])
+  category_id String
+  favorite_id String
+
+  @@map("items")
+}
