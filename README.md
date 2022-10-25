@@ -17,3 +17,4 @@ Esse projeto está utilizando as seguintes tecnologias:
 - [Typescript](https://www.typescriptlang.org/)
 
 
+ 
