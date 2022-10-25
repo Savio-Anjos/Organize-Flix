@@ -13,7 +13,6 @@ Esse projeto está utilizando as seguintes tecnologias:
  
 
 - [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
 - [Node](https://nodejs.org/en/)
 - [Typescript](https://www.typescriptlang.org/)
 
