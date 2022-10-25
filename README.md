@@ -11,7 +11,10 @@
 ## 🚀 Tecnologias
 Esse projeto está utilizando as seguintes tecnologias:
  
-- [Typescript](https://www.typescriptlang.org/)
 
+- [React](https://pt-br.reactjs.org/)
+- [React Native](https://reactnative.dev/)
+- [Node](https://nodejs.org/en/)
+- [Typescript](https://www.typescriptlang.org/)
 
 
