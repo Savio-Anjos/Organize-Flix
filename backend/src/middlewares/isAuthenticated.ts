@@ -25,6 +25,9 @@ import { verify } from "jsonwebtoken";
         token,
         process.env.JWT_SECRET
       ) as Payload
+      
+      //Recuperar o id dot oken e colocar dentro de uma variável dentro do dentro do req.
+      req.user_id = sub;
 
       return next();
       
