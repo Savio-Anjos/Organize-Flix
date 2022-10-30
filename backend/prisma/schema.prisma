@@ -45,7 +45,7 @@ model Item {
   id         String    @id @default(uuid())
   name       String
   banner     String
-  seasons    Int?
+  seasons    String?
   created_ad DateTime? @default(now())
   updated_ad DateTime? @default(now())
 

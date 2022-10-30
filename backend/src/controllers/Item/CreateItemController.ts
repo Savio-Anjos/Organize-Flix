@@ -12,14 +12,13 @@ import { CreateItemService } from "../../services/item/CreateItemService";
           throw new Error("Error upload file")
         } else {
 
-          const { originalname, filename } = req.file;
+          const { originalname, filename: banner } = req.file;
 
-          console.log(filename)
 
           const item = await createItemService.execute({
             name,
             seasons,
-            banner: '',
+            banner,
             category_id
         });
 
