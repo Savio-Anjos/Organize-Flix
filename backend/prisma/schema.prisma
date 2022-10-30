@@ -37,7 +37,6 @@ model Favorite {
   status     Boolean   @default(false)
   created_ad DateTime? @default(now())
   updated_ad DateTime? @default(now())
-  items      Item[]
 
   @@map("favorites")
 }
@@ -46,14 +45,12 @@ model Item {
   id         String    @id @default(uuid())
   name       String
   banner     String
-  seasons    Int?
+  seasons    String?
   created_ad DateTime? @default(now())
   updated_ad DateTime? @default(now())
 
   categoty    Category @relation(fields: [category_id], references: [id])
-  favorites   Favorite @relation(fields: [favorite_id], references: [id])
   category_id String
-  favorite_id String
 
   @@map("items")
 }
