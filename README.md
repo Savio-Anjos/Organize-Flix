@@ -1,6 +1,6 @@
  <p align='center'><img width='400' src="./.github/logo.png"/></p>
 
- <h1 align="center">Organize Robbies(Em desenvolvimento)</h1>
+ <h1 align="center">Organize Flix(Em desenvolvimento)</h1>
 
  <p align='center'>
 <img src="https://img.shields.io/github/repo-size/Savio-Anjos/Organize-Robbies?color=3B82F6">
