@@ -8,6 +8,7 @@ import { CreateCategoryController } from "./controllers/category/CreateCategoryC
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
 import { CreateItemController } from "./controllers/Item/CreateItemController";
 import { ListByCategoryController } from "./controllers/Item/ListByCategoryController";
+import { RemoveItemController } from "./controllers/Item/RemoveItemController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
@@ -32,5 +33,6 @@ import uploadConfig from './config/multer';
   //-- ROTAS ITEM --
   router.post('/item', isAuthenticated, upload.single('file'), new CreateItemController().handle)
   router.get('/category/item', isAuthenticated, new ListByCategoryController().handle)
+  router.delete('/item', isAuthenticated, new RemoveItemController().handle)
 
   export { router }; 
