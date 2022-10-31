@@ -21,16 +21,22 @@ export default function Home() {
    
    <div className={styles.containerCenter}>
      <Image src={logoImg} alt="Logo Organize Flix"/>
+     
+     <h3 className={styles.subTitle}>Faça login e organize seus filmes!</h3>
 
      <div className={styles.login}>
        <form>
 
+       <h4 className={styles.label}>Endereço de email:</h4>
+
         <Input
-         placeholder="Digite seu email"
+         placeholder="joao@exemple.com"
          type="text"
         />
 
-        <Input placeholder="Digite sua senha"
+       <h4 className={styles.label}>Sua senha:</h4>
+
+        <Input placeholder="********"
         type="password"
         />
 
@@ -43,6 +49,8 @@ export default function Home() {
         </Button>
 
        </form>
+
+       <a className={styles.text}>Não possui uma conta? Cadastre-se!</a>
      </div>
    </div>
    </>
