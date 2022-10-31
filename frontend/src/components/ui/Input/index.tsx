@@ -12,7 +12,7 @@ import styles from './styles.module.scss';
         <input className={styles.input} {...rest}/>
     )
   }
-
+ 
 
   export function TextArea({...rest}: TextAreaProps) {
     return (

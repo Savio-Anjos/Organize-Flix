@@ -7,6 +7,7 @@ import logoImg from '../../public/logo.svg';
 
 //COMPONENTS
 import { Input } from "../components/ui/Input";  
+import { Button } from "../components/ui/Button";
 
 
 
@@ -32,6 +33,14 @@ export default function Home() {
         <Input placeholder="Digite sua senha"
         type="password"
         />
+
+        <Button
+         type="submit"
+         loading={false}
+        >
+          Acessar
+
+        </Button>
 
        </form>
      </div>
