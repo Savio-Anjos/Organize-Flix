@@ -6,7 +6,7 @@ import styles from '../../styles/home.module.scss';
 import logoImg from '../../public/logo.svg';
 
 //COMPONENTS
-import { Input } from "../components/Input";  
+import { Input } from "../components/ui/Input";  
 
 
 
