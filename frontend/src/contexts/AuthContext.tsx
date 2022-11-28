@@ -1,4 +1,4 @@
-import { createContext, ReactNode } from 'react';
+import { createContext, ReactNode, useState } from 'react';
 
 type AuthContextData = {
     user: UserProps;
@@ -17,4 +17,23 @@ type SignInProps = {
     password: string;
 }
 
+type AuthProviderProps = {
+    children: ReactNode;
+}
+
 const AuthContext = createContext({} as AuthContextData)
+
+export function AuthProvider({ children }: AuthProviderProps) {
+    const [user, setUser] = useState<UserProps>()
+    const isAuthenticated = !!user;
+
+    async function signIn() {
+        alert("CLICOU NO LOGIN")
+    }
+
+    return (
+        <AuthContext.Provider value={{ user, isAuthenticated, signIn }}>
+           {children}
+        </AuthContext.Provider>
+    )
+}
