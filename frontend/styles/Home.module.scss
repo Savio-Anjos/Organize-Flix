@@ -16,7 +16,7 @@
 
   .label {
     color: var(--gray-50);
-    margin-right: 90px;
+    margin-right: 5.625rem;
     margin-bottom: 1rem;
   }
 
@@ -29,6 +29,10 @@
     flex-direction: column;
     padding: 2rem 1.5rem;
 
+    h1 {
+      color: var(--white);
+    }
+
     form {
         width: 90%;
         display: flex;
@@ -36,7 +40,7 @@
     }
 
     form button {
-        height: 40px;
+        height: 2.5rem;
         font-size: 1.2rem;
     }
   }
