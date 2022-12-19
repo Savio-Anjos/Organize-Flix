@@ -16,6 +16,8 @@ import { toast } from "react-toastify";
 
 import Link from 'next/link';
 
+import { GetServerSideProps } from 'next'
+
 
 
 
@@ -96,4 +98,13 @@ export default function Home() {
    </div>
    </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  
+  console.log("TESTANDO SERVER SIDE PROPS")
+
+  return {
+    props: {}
+  }
 }
