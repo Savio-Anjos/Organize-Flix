@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 
 import Link from 'next/link';
 
-import { GetServerSideProps } from 'next'
+import { canSSRGuest } from "../utils/canSSRGuest";
 
 
 
@@ -100,11 +100,9 @@ export default function Home() {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  
-  console.log("TESTANDO SERVER SIDE PROPS")
+export const getServerSideProps = canSSRGuest(async (ctx) => {
 
   return {
     props: {}
   }
-}
+})
