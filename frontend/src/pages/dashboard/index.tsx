@@ -1,3 +1,4 @@
+import { canSSRAuth } from "../../utils/canSSRAuth"
 
 export default function Dashaboard() {
     return (
@@ -6,3 +7,10 @@ export default function Dashaboard() {
         </div>
     )
 }
+
+export const getServerSideProps = canSSRAuth(async (ctx) => {
+
+    return {
+        props: {}
+    }
+})
