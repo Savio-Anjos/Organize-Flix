@@ -10,7 +10,7 @@
 
 ## 🚀 Tecnologias
 Esse projeto está utilizando as seguintes tecnologias:
-   
+    
 
 - [React](https://pt-br.reactjs.org/)
 - [Node](https://nodejs.org/en/)
