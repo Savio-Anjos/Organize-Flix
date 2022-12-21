@@ -107,10 +107,10 @@ export default function SignUp() {
    </>
   )
 }
-
+/*
 export const getServerSideProps = canSSRGuest(async (ctx) => {
 
   return {
     props: {}
   }
-})
+})*/
