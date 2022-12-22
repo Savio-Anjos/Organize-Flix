@@ -13,7 +13,7 @@ export default function Dashaboard() {
         <div>
             <Header/>
             <h1>Painel</h1>
-        </div>*/
+        </div>
         
         </>
     )
