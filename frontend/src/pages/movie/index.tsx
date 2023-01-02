@@ -48,19 +48,44 @@ import { setupApiClient } from '../../services/api';
             setAvatarUrl(URL.createObjectURL(e.target.files[0]))
         }
     }
-
-    function handleRegister(event: FormEvent) {
-        event.preventDefault();
-        
-        if(movie === '') {
-            toast.warn('Preencha os campos obrigatórios!')
-            return;
-        }
-    }
     
     //Quando uma categoria é selecionada
     function handleChangeCategory(event) {
         setCategorySelected(event.target.value)
+    }
+
+    async function handleRegister(event: FormEvent) {
+        event.preventDefault();
+
+        try {
+
+            const data = new FormData();
+
+            if(movie === '' || imageAvatar === null) {
+                toast.warn('Preencha os campos obrigatórios!')
+                return;
+            }
+
+            data.append('name', movie);
+            data.append('seasons', seasons);
+            data.append('category_id', categories[categorySelected].id);
+            data.append('file', imageAvatar)
+
+            const apiClient = setupApiClient();
+
+            await apiClient.post('/item', data)
+
+            toast.success("Cadastrado com sucesso!")
+
+        } catch (err) {
+            console.log(err);
+            toast.error('Ops erro ao cadastrar!')
+        }
+
+        setMovie('');
+        setSeasons('');
+        setImageAvatar(null);
+        setAvatarUrl('');
     }
     
     return (
