@@ -8,6 +8,7 @@ import prismaClient from "../../prisma";
             select: {
                 id: true,
                 name: true,
+                seasons: true,
             }
         })
 

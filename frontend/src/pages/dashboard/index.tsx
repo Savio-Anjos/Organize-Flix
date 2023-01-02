@@ -5,6 +5,8 @@ import styles from './style.module.scss';
 import { Header } from "../../components/Header";
 import { FiRefreshCcw } from 'react-icons/fi'
 
+import { setupApiClient } from "../../services/api";
+
 export default function Dashaboard() {
     return (
         <>
@@ -42,6 +44,12 @@ export default function Dashaboard() {
 }
 
 export const getServerSideProps = canSSRAuth(async (ctx) => {
+     
+    const apiCliente = setupApiClient(ctx);
+
+    const response = await apiCliente.get('item');
+
+    console.log(response.data);
 
     return {
         props: {}
