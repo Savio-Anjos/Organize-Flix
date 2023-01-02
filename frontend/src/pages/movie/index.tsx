@@ -1,5 +1,5 @@
 
-  import { FormEvent, useState } from 'react';
+  import { ChangeEvent, FormEvent, useState } from 'react';
   import Head from 'next/head';
   import styles from "./style.module.scss";
 
@@ -7,10 +7,33 @@
   import { Header } from '../../components/Header';
 import { toast } from 'react-toastify';
 
+import { FiUpload } from 'react-icons/fi'
+
   export default function Movie() {
+    
+    const [avatarUrl, setAvatarUrl] = useState('')
+    const [imageAvatar, setImageAvatar] = useState(null)
 
     const [movie, setMovie] = useState('');
     const [seasons, setSeasons] = useState('')
+
+    function handleFile(e: ChangeEvent<HTMLInputElement>) {
+        
+        if(!e.target.files) {
+            return;
+        }
+
+        const image = e.target.files[0]
+
+        if(!image) {
+            return;
+        }
+
+        if(image.type === 'image/jpeg' || image.type === 'image/png') {
+            setImageAvatar(image);
+            setAvatarUrl(URL.createObjectURL(e.target.files[0]))
+        }
+    }
 
     function handleRegister(event: FormEvent) {
         event.preventDefault();
@@ -33,6 +56,25 @@ import { toast } from 'react-toastify';
             <h1>Novo Filme</h1>
             <form className={styles.form}  onSubmit={handleRegister}>
 
+                <label className={styles.labelAvatar}>
+                    <span>
+                        <FiUpload size={30} color="#FFF"/>
+
+                    </span>
+
+                    <input type="file" accept='image.png, image.jpeg' onChange={handleFile}/>
+                      
+                      {avatarUrl && (
+                         <img 
+                         className={styles.preview}
+                         src={avatarUrl}
+                         alt="Banner do filme"
+                         width={250}
+                         height={250} 
+                         />
+                      )}
+                </label>
+                     
                 <select>
                     <option>
                         Filme
