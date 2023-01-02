@@ -52,7 +52,7 @@ import { setupApiClient } from '../../services/api';
     //Quando uma categoria é selecionada
     function handleChangeCategory(event) {
         setCategorySelected(event.target.value)
-    }
+    } 
 
     async function handleRegister(event: FormEvent) {
         event.preventDefault();
