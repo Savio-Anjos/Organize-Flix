@@ -10,6 +10,7 @@ import { CreateItemController } from "./controllers/Item/CreateItemController";
 import { ListByCategoryController } from "./controllers/Item/ListByCategoryController";
 import { RemoveItemController } from "./controllers/Item/RemoveItemController";
 import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController";
+import { ListAllItemsController } from "./controllers/Item/ListAllItemsController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
@@ -36,5 +37,6 @@ import uploadConfig from './config/multer';
   router.post('/item', isAuthenticated, upload.single('file'), new CreateItemController().handle)
   router.get('/category/item', isAuthenticated, new ListByCategoryController().handle)
   router.delete('/item', isAuthenticated, new RemoveItemController().handle)
+  router.get('/item', isAuthenticated, new ListAllItemsController().handle)
 
   export { router }; 
