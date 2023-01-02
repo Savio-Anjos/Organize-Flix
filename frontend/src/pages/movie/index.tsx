@@ -9,10 +9,24 @@ import { toast } from 'react-toastify';
 
 import { FiUpload } from 'react-icons/fi'
 
-  export default function Movie() {
+import { setupApiClient } from '../../services/api';
+
+ type ItemProps = {
+    id: string;
+    name: string;
+ }
+
+ interface CategoryProps {
+    categoryList: ItemProps[];
+ }
+
+  export default function Movie({ categoryList }: CategoryProps) {
     
     const [avatarUrl, setAvatarUrl] = useState('')
     const [imageAvatar, setImageAvatar] = useState(null)
+
+    const [categories, setCaregories] = useState(categoryList || []);
+    const [categorySelected, setCategorySelected] = useState(0);
 
     const [movie, setMovie] = useState('');
     const [seasons, setSeasons] = useState('')
@@ -42,6 +56,11 @@ import { FiUpload } from 'react-icons/fi'
             toast.warn('Preencha os campos obrigatórios!')
             return;
         }
+    }
+    
+    //Quando uma categoria é selecionada
+    function handleChangeCategory(event) {
+        setCategorySelected(event.target.value)
     }
     
     return (
@@ -75,14 +94,14 @@ import { FiUpload } from 'react-icons/fi'
                       )}
                 </label>
                      
-                <select>
-                    <option>
-                        Filme
-                    </option>
-
-                    <option>
-                        Série
-                    </option>
+                <select value={categorySelected} onChange={handleChangeCategory}>
+                    {categories.map((item, index) => {
+                        return(
+                            <option key={item.id} value={index}>
+                                {item.name}
+                            </option>
+                        )
+                    })}
                 </select>
 
                 <input
@@ -114,8 +133,14 @@ import { FiUpload } from 'react-icons/fi'
   }
 
   export const getServerSideProps = canSSRAuth(async (ctx) => {
-
+     const apiClient = setupApiClient(ctx)
+     
+     const response = await apiClient.get('/category');
+     //console.log(response.data);
+     
     return {
-        props: {}
+        props: {
+            categoryList: response.data
+        }
     }
   })
