@@ -36,6 +36,7 @@
    margin-bottom: 1rem;
    align-items: center;
    border-radius: 0.3rem;
+   justify-content: space-between;
 
    button {
       border: 0;
@@ -55,4 +56,9 @@
    height: 60px;
    border-radius: 0.3rem 0 0 0.3rem;
    margin-right: 1rem;
+ }
+
+ .trashIcon {
+   margin-right: 1.875rem;
+   cursor: pointer;
  }

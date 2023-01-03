@@ -22,7 +22,7 @@ import { AuthContext } from '../../contexts/AuthContext';
                   <a>Categoria</a>
                </Link>
 
-               <Link href="/filmes" legacyBehavior>
+               <Link href="/movie" legacyBehavior>
                   <a>Filmes</a>
                </Link>
 

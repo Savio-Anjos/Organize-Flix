@@ -1,13 +1,38 @@
+import { useState } from "react";
 import { canSSRAuth } from "../../utils/canSSRAuth"
 import Head from "next/head";
 import styles from './style.module.scss';
 
 import { Header } from "../../components/Header";
-import { FiRefreshCcw } from 'react-icons/fi'
+import { FiRefreshCcw, FiTrash2 } from 'react-icons/fi'
 
 import { setupApiClient } from "../../services/api";
 
-export default function Dashaboard() {
+type ItemsProps = {
+    id: string;
+    name: string;
+    seasons?: string | number;
+}
+
+interface HomeProps {
+    items: ItemsProps[]
+}
+
+export default function Dashaboard( { items }: HomeProps) {
+
+    const [itemList, setItemList] = useState(items || []);
+
+    async function handleDeleteItem(id: string) {
+        const apiCliente = setupApiClient();
+        
+        apiCliente.delete('/item', {
+            data: {
+                item_id: id
+            }
+        })
+       
+    }
+
     return (
         <>
 
@@ -28,12 +53,19 @@ export default function Dashaboard() {
                 </div>
                 <article className={styles.listItems}>
 
-                    <section className={styles.movieItem}>
-                    <button>
-                        <div className={styles.tag}></div>
-                        <span>Boku no hero</span>
-                    </button>
-                    </section>
+                    { itemList.map( item => (
+                        <section key={item.id} className={styles.movieItem}>
+                        <button>
+                            <div className={styles.tag}></div>
+                            <span>{item.name}</span>
+                        </button>
+                        <span className={styles.trashIcon} key={item.id} onClick={ () => handleDeleteItem( item.id)}>
+                             <FiTrash2 color="#fff" size={25}/>
+                            </span>
+                        </section>
+                    ))}
+
+                    
 
                 </article>
             </main>
@@ -49,9 +81,11 @@ export const getServerSideProps = canSSRAuth(async (ctx) => {
 
     const response = await apiCliente.get('item');
 
-    console.log(response.data);
+    //console.log(response.data);
 
     return {
-        props: {}
+        props: {
+            items: response.data
+        }
     }
 })
