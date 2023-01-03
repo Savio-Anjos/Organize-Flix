@@ -32,11 +32,19 @@ export default function Dashaboard( { items }: HomeProps) {
                  }         
             }) 
             toast.success('Item deletado com sucesso!')
+            const response = await apiCliente.get('/item')
+            setItemList(response.data)
         } catch (err) {
             console.log('Erro ao excluir ', err)
         }
         
-       
+    }
+
+    async function handleRefreshItems() {
+        const apiCliente = setupApiClient();
+
+        const response = await apiCliente.get('/item')
+        setItemList(response.data)
     }
 
     return (
@@ -53,7 +61,7 @@ export default function Dashaboard( { items }: HomeProps) {
                 <div className={styles.containerHeader}>
                     <h1>Meus Itens</h1>
 
-                    <button>
+                    <button onClick={handleRefreshItems}>
                         <FiRefreshCcw size={25} color="#3fffa3" />
                     </button>
                 </div>
