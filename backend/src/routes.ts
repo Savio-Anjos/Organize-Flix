@@ -13,6 +13,7 @@ import { RemoveCategoryController } from "./controllers/category/RemoveCategoryC
 import { ListAllItemsController } from "./controllers/Item/ListAllItemsController";
 import { CreateFaviriteController } from "./controllers/favorite/CreateFaviriteController";
 import { ListFavoriteController } from "./controllers/favorite/ListFavoriteController";
+import { RemoveFavoriteController } from "./controllers/favorite/RemoveFavoriteController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
@@ -45,5 +46,6 @@ import { ListFavoriteService } from "./services/favorite/ListFavoriteService";
   //-- ROTAS FAVORITE --
   router.post('/favorite', isAuthenticated, new CreateFaviriteController().handle)
   router.get('/favorite', isAuthenticated, new ListFavoriteController().handle)
+  router.delete('/favorite', isAuthenticated, new RemoveFavoriteController().handle)
 
   export { router }; 
