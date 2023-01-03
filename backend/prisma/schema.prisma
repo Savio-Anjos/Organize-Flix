@@ -34,7 +34,8 @@ model Category {
 
 model Favorite {
   id         String    @id @default(uuid())
-  status     Boolean   @default(false)
+  name       String
+  seasons    String?
   created_ad DateTime? @default(now())
   updated_ad DateTime? @default(now())
 
@@ -49,7 +50,7 @@ model Item {
   created_ad DateTime? @default(now())
   updated_ad DateTime? @default(now())
 
-  categoty    Category @relation(fields: [category_id], references: [id])
+  category    Category @relation(fields: [category_id], references: [id])
   category_id String
 
   @@map("items")
