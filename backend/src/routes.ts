@@ -12,10 +12,12 @@ import { RemoveItemController } from "./controllers/Item/RemoveItemController";
 import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController";
 import { ListAllItemsController } from "./controllers/Item/ListAllItemsController";
 import { CreateFaviriteController } from "./controllers/favorite/CreateFaviriteController";
+import { ListFavoriteController } from "./controllers/favorite/ListFavoriteController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
 import uploadConfig from './config/multer';
+import { ListFavoriteService } from "./services/favorite/ListFavoriteService";
 
   const router = Router();
 
@@ -42,5 +44,6 @@ import uploadConfig from './config/multer';
 
   //-- ROTAS FAVORITE --
   router.post('/favorite', isAuthenticated, new CreateFaviriteController().handle)
+  router.get('/favorite', isAuthenticated, new ListFavoriteController().handle)
 
   export { router }; 

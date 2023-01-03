@@ -10,7 +10,8 @@ class CreateFaviriteController {
 
         const favorite = await createFavoriteService.execute({
             id,
-            name
+            name,
+
         })
 
         return res.json(favorite);

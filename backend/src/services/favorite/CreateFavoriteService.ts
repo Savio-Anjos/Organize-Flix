@@ -11,7 +11,7 @@ interface FavoriteRequest {
         const favorite = await prismaClient.favorite.create({
             data: {
                 id: id,
-                name: name,
+                name: name
             }
         })
 
