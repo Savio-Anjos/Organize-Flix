@@ -4,7 +4,7 @@ import Head from "next/head";
 import styles from './style.module.scss';
 
 import { Header } from "../../components/Header";
-import { FiRefreshCcw, FiTrash2 } from 'react-icons/fi'
+import { FiRefreshCcw, FiTrash2, FiHeart } from 'react-icons/fi'
 
 import { setupApiClient } from "../../services/api";
 import { toast } from "react-toastify";
@@ -47,6 +47,31 @@ export default function Dashaboard( { items }: HomeProps) {
         setItemList(response.data)
     }
 
+    async function handleFavorite(id: string, name: string) { 
+        //console.log(id)
+       // console.log(name)
+
+       const apiCliente = setupApiClient();
+
+       try {
+        await apiCliente.post('/favorite', {
+            
+             id: id,
+             name: name,
+            
+        })
+        toast.success('Adicionado com sucesso!')
+        
+       } catch (err) {
+        console.log(err)
+        toast.error('Erro ao adicionar aos favoritos!')
+       }
+
+      
+      
+
+    }
+
     return (
         <>
 
@@ -73,6 +98,11 @@ export default function Dashaboard( { items }: HomeProps) {
                             <div className={styles.tag}></div>
                             <span>{item.name}</span>
                         </button>
+
+                             <span className={styles.iconFavorites} onClick={() => handleFavorite(item.id, item.name)}>
+                             <FiHeart className={styles.iconHeart} size={25}/>
+                         </span>
+                                         
                         <span className={styles.trashIcon} key={item.id} onClick={ () => handleDeleteItem( item.id)}>
                              <FiTrash2 className={styles.icon} size={25}/>
                             </span>

@@ -58,7 +58,7 @@ export default function Dashaboard( { items }: HomeProps) {
             <main className={styles.container}>
 
                 <div className={styles.containerHeader}>
-                    <h1>Meus Itens</h1>
+                    <h1>Meus Favoritos</h1>
 
                     <button onClick={handleRefreshFavorites}>
                         <FiRefreshCcw size={25} color="#3fffa3" />

@@ -26,6 +26,10 @@ import { AuthContext } from '../../contexts/AuthContext';
                   <a>Filmes</a>
                </Link>
 
+               <Link href="/favorite" legacyBehavior>
+                  <a>Favoritos</a>
+               </Link>
+
                <button onClick={signOut}>
                   <FiLogOut color='#FFF' size={24}/>
                </button>
