@@ -11,6 +11,7 @@ import { ListByCategoryController } from "./controllers/Item/ListByCategoryContr
 import { RemoveItemController } from "./controllers/Item/RemoveItemController";
 import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController";
 import { ListAllItemsController } from "./controllers/Item/ListAllItemsController";
+import { CreateFaviriteController } from "./controllers/favorite/CreateFaviriteController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
@@ -38,5 +39,8 @@ import uploadConfig from './config/multer';
   router.get('/category/item', isAuthenticated, new ListByCategoryController().handle)
   router.delete('/item', isAuthenticated, new RemoveItemController().handle)
   router.get('/item', isAuthenticated, new ListAllItemsController().handle)
+
+  //-- ROTAS FAVORITE --
+  router.post('/favorite', isAuthenticated, new CreateFaviriteController().handle)
 
   export { router }; 
