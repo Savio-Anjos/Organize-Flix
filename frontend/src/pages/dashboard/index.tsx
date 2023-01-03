@@ -7,6 +7,7 @@ import { Header } from "../../components/Header";
 import { FiRefreshCcw, FiTrash2 } from 'react-icons/fi'
 
 import { setupApiClient } from "../../services/api";
+import { toast } from "react-toastify";
 
 type ItemsProps = {
     id: string;
@@ -24,12 +25,17 @@ export default function Dashaboard( { items }: HomeProps) {
 
     async function handleDeleteItem(id: string) {
         const apiCliente = setupApiClient();
+        try {
+            await apiCliente.delete('/item', {
+                data: {
+                    item_id: id  
+                 }         
+            }) 
+            toast.success('Item deletado com sucesso!')
+        } catch (err) {
+            console.log('Erro ao excluir ', err)
+        }
         
-        apiCliente.delete('/item', {
-            data: {
-                item_id: id
-            }
-        })
        
     }
 
@@ -60,7 +66,7 @@ export default function Dashaboard( { items }: HomeProps) {
                             <span>{item.name}</span>
                         </button>
                         <span className={styles.trashIcon} key={item.id} onClick={ () => handleDeleteItem( item.id)}>
-                             <FiTrash2 color="#fff" size={25}/>
+                             <FiTrash2 className={styles.icon} size={25}/>
                             </span>
                         </section>
                     ))}

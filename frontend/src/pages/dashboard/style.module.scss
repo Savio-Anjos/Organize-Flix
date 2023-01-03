@@ -61,4 +61,14 @@
  .trashIcon {
    margin-right: 1.875rem;
    cursor: pointer;
+
  }
+
+ .icon {
+   color: var(--white);
+
+  }
+
+  .icon:hover {
+   color: rgb(212, 49, 49);
+  }
