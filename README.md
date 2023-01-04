@@ -19,7 +19,7 @@ Esse projeto está utilizando as seguintes tecnologias:
 
 
 ## ⚙️ Funcionalidades
-- Sistema de cadastroe login de usuários;
+- Sistema de cadastro e login de usuários;
 - Criar novas categorias;
 - Listar filmes por categoria;
 - Cadastrar novos filmes;
