@@ -16,4 +16,4 @@ import { ListByCategoryService } from "../../services/item/ListByCategoryService
     }
   }
 
-  export { ListByCategoryController }
+  export { ListByCategoryController } 

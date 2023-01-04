@@ -10,10 +10,15 @@ import { CreateItemController } from "./controllers/Item/CreateItemController";
 import { ListByCategoryController } from "./controllers/Item/ListByCategoryController";
 import { RemoveItemController } from "./controllers/Item/RemoveItemController";
 import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController";
+import { ListAllItemsController } from "./controllers/Item/ListAllItemsController";
+import { CreateFaviriteController } from "./controllers/favorite/CreateFaviriteController";
+import { ListFavoriteController } from "./controllers/favorite/ListFavoriteController";
+import { RemoveFavoriteController } from "./controllers/favorite/RemoveFavoriteController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
 import uploadConfig from './config/multer';
+import { ListFavoriteService } from "./services/favorite/ListFavoriteService";
 
   const router = Router();
 
@@ -36,5 +41,11 @@ import uploadConfig from './config/multer';
   router.post('/item', isAuthenticated, upload.single('file'), new CreateItemController().handle)
   router.get('/category/item', isAuthenticated, new ListByCategoryController().handle)
   router.delete('/item', isAuthenticated, new RemoveItemController().handle)
+  router.get('/item', isAuthenticated, new ListAllItemsController().handle)
+
+  //-- ROTAS FAVORITE --
+  router.post('/favorite', isAuthenticated, new CreateFaviriteController().handle)
+  router.get('/favorite', isAuthenticated, new ListFavoriteController().handle)
+  router.delete('/favorite', isAuthenticated, new RemoveFavoriteController().handle)
 
   export { router }; 
