@@ -46,7 +46,7 @@ npm i
 yarn
 ```
 
-### Inicie o aplicação servidor
+### Inicie o servidor
 ```bash
 yarn dev
 npm run dev
@@ -72,6 +72,7 @@ npm run dev
 
 ## 🖼️ Layout
 <img src=".github/dashboard.png">
+<img src=".github/filmes.png">
 
 ---
 <p>Criado com 💙 por <a href='https://github.com/Savio-Anjos/' target='_blank'>Sávio Anjos</a></p>
